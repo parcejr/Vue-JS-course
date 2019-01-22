@@ -1,0 +1,5 @@
+[
+    {"nombre": "jorge tinoco", "curso": "HTML", "estado": false },
+    { "nombre":"roger federes", "curso": "tennis", "estado": true},
+    {"nombre": "messi leonardo", "curso":"futbolista","estado":true}
+]

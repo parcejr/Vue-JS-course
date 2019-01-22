@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.1.0/dist/vuex.js"></script>
+    <title>Plantilla</title>
+</head>
+<body>
+    <div class="" id="app">
+        <div class="container">
+            <padre></padre>
+
+        </div>
+    </div>
+    <script>
+        
+        // componente Padre
+    Vue.component('padre',{
+        template: //html 
+            `
+            <div>
+                <h1 align="center">{{numero}}</h1>
+                <hijo></hijo>
+                <br>
+                <ul v-for="item of cursos">
+                    <li>{{item.nombre}} -- {{item.curso}}</li>
+                </ul>
+                
+            </div>     
+            `,
+            computed:{
+                ...Vuex.mapState(['numero','cursos']),
+                ...Vuex.mapMutations(['llenarCurso']),
+                ...Vuex.mapActions(['obtenerDatos'])
+            },
+        data(){
+            return{
+                titulo: 'ACTIONS',
+            }
+        }
+    })
+    Vue.component('hijo',{
+        template: //html
+        `
+        <div>
+            <button @click="aumentar" class="btn btn-success"> + </button>
+            <button @click="disminuir" class="btn btn-danger"> - </button>
+            <button @click="obtenerDatos" class="btn btn-primary"> MOSTRAR TABLA</button>
+        </div>
+        
+        `,
+        methods:{
+            ...Vuex.mapMutations(['aumentar','disminuir','llenarCurso']),
+            ...Vuex.mapActions(['obtenerDatos'])
+        }
+    })
+
+    //vuex
+    const store = new Vuex.Store({
+        state:{
+            numero:0,
+            cursos: []
+        },
+        mutations:{
+            aumentar(state){
+                state.numero ++
+            },
+            disminuir(state){
+                state.numero --
+            },
+            llenarCurso(state,cursosAccion){
+                state.cursos = cursosAccion;
+            }
+        },
+        actions:{
+            obtenerDatos: async function({commit}){
+                const data =  await fetch('tabla.json');
+                const cursos = await data.json();
+                commit('llenarCurso', cursos);
+            }
+        }
+    })
+    // vue
+    const vm = new Vue({
+        el:'#app',
+        store:store,
+        data:{
+
+        }
+    })
+        
+    </script>
+</body>
+</html>
