@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>CRUD</title>
+    </head>
+    <body>
+        <div id="app" class="container"> 
+            <h1 class="mt-5">{{titulo}}</h1>
+            <input type="text" class="form-control mt-3" v-model= "nuevaTarea">
+            <input type="button" class="btn btn-primary mt-3" value="Tarea Nueva" @click="agregarTarea">
+            <h1>{{nuevaTarea}}</h1>
+        </div>   
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+        <script src="js/vm.js"></script>
+    </body>
+</html>

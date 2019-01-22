@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>VUE</title>  
+</head>
+<body>
+    <div id="apt">
+        <h1>{{titulo}}</h1>
+        <input type="text" v-model="nuevaFruta">
+        <input type="button" value= "click" @click="agregarFrutas" @keyup.enter ="agregarFrutas">
+        
+        <ul>
+            <li v-for="libro of libros">{{libro}}</li>
+        </ul> 
+        <ul>
+            <li v-for="fruta of frutas"> <input type="text" v-model.number ="fruta.videos"> -- {{fruta.nombre}} --  -- {{fruta.curso}} <span v-if ="fruta.videos> 0"> -- MIRANDO VIDEOS </span>
+                <button @click="fruta.videos++">+</button>  
+                <button @click="fruta.videos--">-</button>
+            </li>
+        </ul>
+        <h3> TOTAL: {{total}}</h3>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+    <script src="js/ou.js"></script>
+</body>
+</html>
