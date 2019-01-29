@@ -4,16 +4,24 @@ const vm = new Vue({
         titulo: 'hola',
         tarea:[],
         nuevaTarea: ''
-
+    },
+    created() {
+        localStorage.getItem('tareas');
     },
     methods:{
-        agregarTarea: function(){
-            
+        agregarTarea(){
             this.tarea.push({
-                nombre: this.tareaNueva,
+                nombre: this.nuevaTarea,
                 estado: false
             });
-            this.nuevaTarea = ''
+            localStorage.setItem('tareas', this.tarea);
+            this.nuevaTarea = '';
+            
+        },
+        eliminar(index){
+            console.log(index);
+            this.tarea.splice(index, 1);
         }
+    
     }    
 })

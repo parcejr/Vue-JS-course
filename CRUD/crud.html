@@ -4,14 +4,21 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">  
         <title>CRUD</title>
     </head>
     <body>
         <div id="app" class="container"> 
             <h1 class="mt-5">{{titulo}}</h1>
-            <input type="text" class="form-control mt-3" v-model= "nuevaTarea">
-            <input type="button" class="btn btn-primary mt-3" value="Tarea Nueva" @click="agregarTarea">
-            <h1>{{nuevaTarea}}</h1>
+            <input type="text" class="form-control mt-3" v-model= "nuevaTarea" v-on:keyup.enter="agregarTarea">
+            <input type="button" class="btn btn-primary mt-3" value="Tarea Nueva" @click="agregarTarea" >
+            <div class="alert mt-3 d-flex justify-content-between align-self-center" :class="item.estado ? 'alert-success' : 'alert-danger'" v-for="(item, index) of tarea">
+                {{index}} - {{item.nombre}} - {{item.estado}}
+                <div class="float-right">
+                    <button class="btn btn-success" @click="item.estado = true"><i class="fas fa-check-circle"></i></button>
+                    <button class="btn btn-danger" @click="eliminar(index)"><i class="fas fa-backspace"></i></button>
+                </div>
+            </div>
         </div>   
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
         <script src="js/vm.js"></script>
