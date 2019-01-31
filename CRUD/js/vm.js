@@ -21,7 +21,6 @@ const vm = new Vue({
         eliminar(index){
             console.log(index);
             this.tarea.splice(index, 1);
-        }
-    
+        }    
     }    
 })

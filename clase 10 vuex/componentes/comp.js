@@ -9,7 +9,7 @@ Vue.component ('titulo', {
     data(){
         return{
             titulo:'hola mundo',
-            numero: 0
+            numero: 2
         }
     }   
 })

@@ -2,16 +2,18 @@ Vue.component('padre', {
     template: //html
     `
     <div class="bg-success container p-5 mt-5">
-        <h1>Numero Padre: {{numero}} -- {{result}}</h1>
-        <button class="btn btn-primary" @click="numero++">+</button>
+        <h1>Numero Padre: {{dato}} -- {{result}}</h1>
+        <button class="btn btn-primary" @click="dato++">+</button>
         <hr>
-        <hijo :numero="numero" :resultado="result"></hijo>
+        <hijo :numero="dato" :resultado="result" @enviar = "Num_recibido = $event"></hijo>
+        <h1>{{Num_recibido}}</h1>
     </div>
     `,
     data(){
         return{
-            numero:0,
-            result:10
+            dato:0,
+            result:10,
+            Num_recibido: ''
         }
     }
 })

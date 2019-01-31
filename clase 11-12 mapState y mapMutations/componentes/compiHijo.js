@@ -3,7 +3,7 @@ Vue.component ('numero',{
     `
     <div>
         <button @click="aumentar">+</button>
-        <button @click="disminuir(2)">-</button> 
+        <button @click="disminuir(3)">-</button> 
         <h1>{{valor}}</h1>
     </div>
     `,

@@ -12,6 +12,7 @@ const vm = new Vue({
         nuevaFruta: '',
         total: 0
     },
+
     methods: {
         agregarFrutas: function() {
             // console.log('diste click');
@@ -20,8 +21,8 @@ const vm = new Vue({
             })
         }
     },
-    computer:{
-        sumarVideos(){
+    computed:{
+        Videos(){
             this.total = 0;
             console.log(this.total);
             for(sumar of  this.frutas){
@@ -30,6 +31,6 @@ const vm = new Vue({
             }
             return this.total;
         } 
-  }
+    }
 })
 
